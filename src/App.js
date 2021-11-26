@@ -1,11 +1,33 @@
+import React from 'react';
 
+import CollectionPreview from './components/collection-preview/collection-preview.component';
+
+import SHOP_DATA from './shop_data';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      items : SHOP_DATA
+    };
+  }
+
+  componentDidMount(){
+  }
+
+  render(){
+    const { items } = this.state;
+    return(
+      <div>{
+        items.map(
+          item => <CollectionPreview key={item.id} title={item.title} items={item.items} />
+        )
+      }</div>
+     )
+  }
 }
+
 
 export default App;
