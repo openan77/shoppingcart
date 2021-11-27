@@ -1,13 +1,25 @@
 import React from "react";
 
 import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropDown from "../cart-dropdown/cart-dropdown.component";
+import { connect } from "react-redux";
+
 
 import './header.style.scss'
 
-const Header = () => (
+const Header = ( { hidden } ) =>(
       <div className='header'>
-         <CartIcon />
+         <div className='options'>
+               <CartIcon />
+         </div>
+         {hidden ? null : <CartDropDown />}
       </div>
 )
 
-export default Header;
+const mapStateToProps = state => (
+      {
+            hidden : state.cart.hidden
+      }
+)
+
+export default connect(mapStateToProps)(Header);
