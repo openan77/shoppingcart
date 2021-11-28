@@ -4,9 +4,10 @@ export const toggleCartHidden = () => (
       }
 );
 
-export const addCart = ( cart ) => (
+export const addItem = item => (
       {
-            type : 'CART_ADD',
-            payload : cart
+          type: 'ADD_ITEM',
+          payload: item
       }
-);
+  );
+  
