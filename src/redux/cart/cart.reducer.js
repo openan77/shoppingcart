@@ -1,6 +1,7 @@
 const initial_state = {
       hidden:true,
-      cartItems:[]
+      cartItems:[],
+      total:0
 }
 
 const cartReducer = (state = initial_state , action) => 
@@ -24,10 +25,10 @@ const cartReducer = (state = initial_state , action) =>
                               ...state,
                               cartItems : [...state.cartItems,  {...action.payload, quantity: 1 } ]
                         }
-                  }                 
-
+                  };
+                  
             default:
-            return state
+                  return state;
 
       }
 }
