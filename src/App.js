@@ -1,33 +1,22 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import CollectionPreview from './components/collection-preview/collection-preview.component';
 import Header from './components/header/header.component';
+import ShopPage from './pages/shop/shop.component';
+import CheckoutPage from './pages/checkout/checkout.component.jsx'
 
-import SHOP_DATA from './shop_data';
+
 import './App.css';
 
 class App extends React.Component {
-  constructor(){
-    super();
-
-    this.state = {
-      items : SHOP_DATA
-    };
-  }
-
-  componentDidMount(){
-  }
-
   render(){
-    const { items } = this.state;
     return(
       <div>
         <Header />
-        {
-        items.map(
-          item => <CollectionPreview key={item.id} title={item.title} items={item.items} />
-        )
-        }
+        <Switch>
+          <Route exact path='/' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
+        </Switch>
       </div>
      )
   }
