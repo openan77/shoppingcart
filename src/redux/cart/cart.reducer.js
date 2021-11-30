@@ -1,3 +1,5 @@
+import { addItemToCart } from "./cart.utils";
+
 const initial_state = {
       hidden:true,
       cartItems:[],
@@ -13,19 +15,24 @@ const cartReducer = (state = initial_state , action) =>
                         hidden : !state.hidden
                   };
             case 'ADD_ITEM':
-                  const existingIndex = state.cartItems.findIndex(
-                        item => item.id===action.payload.id
-                  )
-
-                  if(existingIndex >= 0){
-                        state.cartItems[existingIndex].quantity+=1
+                  return {
+                        ...state,
+                        cartItems : addItemToCart( state.cartItems , action.payload )
                   }
-                  else{
-                        return{
-                              ...state,
-                              cartItems : [...state.cartItems,  {...action.payload, quantity: 1 } ]
-                        }
-                  };
+                  
+                  // const existingIndex = state.cartItems.findIndex(
+                  //       item => item.id===action.payload.id
+                  // )
+
+                  // if(existingIndex >= 0){
+                  //       state.cartItems[existingIndex].quantity+=1
+                  // }
+                  // else{
+                  //       return{
+                  //             ...state,
+                  //             cartItems : [...state.cartItems,  {...action.payload, quantity: 1 } ]
+                  //       }
+                  // };
                   
             default:
                   return state;
