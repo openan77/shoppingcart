@@ -9,18 +9,23 @@ import { toggleCartHidden } from "../../redux/cart/cart.action";
 
 import './cart-dropdown.style.scss'
 
-const CartDropDown = ( {cartItems , history , dispatch } ) => (
+const CartDropDown = ( {cartItems , history , dispatch } ) => {
+
+      const redirect = () => {
+            history.push('/checkout');
+            dispatch(toggleCartHidden());
+      }
+
+      return (
       <div className='cart-dropdown'>
             <div className='cart-items'>
                   {cartItems.map(
                         cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />
                   )}
             </div>
-            <CustomButton onClick={ () => {history.push('/checkout');
-            dispatch(toggleCartHidden());
-            }} >CHECK OUT</CustomButton>
+            <CustomButton onClick={ redirect } >CHECK OUT</CustomButton>
       </div>
-)
+)}
 
 const mapStateToProps = state => (
       {
