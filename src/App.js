@@ -8,13 +8,22 @@ import CheckoutPage from './pages/checkout/checkout.component.jsx'
 
 import './App.css';
 
+
+const HomePage = () =>(
+  <div>
+    Homepage
+  </div>
+)
+
+
 class App extends React.Component {
   render(){
     return(
       <div>
         <Header />
         <Switch>
-          <Route exact path='/' component={ShopPage} />
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
         </Switch>
       </div>
