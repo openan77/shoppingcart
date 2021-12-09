@@ -9,23 +9,21 @@ import CheckoutPage from './pages/checkout/checkout.component.jsx'
 import './App.css';
 
 
-const HomePage = () =>(
-  <div>
-    Homepage
-  </div>
-)
-
+const basename = process.env.REACT_APP_BASENAME;
 
 class App extends React.Component {
   render(){
+
+    
+    console.log(basename)
+
     return(
       <div>
         <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route path='/checkout' component={CheckoutPage} />
-        </Switch>
+          <Switch>
+            <Route path='/' component={ShopPage} />
+            <Route path='/checkout' component={CheckoutPage} />
+          </Switch>
       </div>
      )
   }

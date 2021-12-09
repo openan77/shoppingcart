@@ -1,4 +1,4 @@
-# Redux
+## Redux
 
 透過Redux相關套件建立store，儲存reducer狀態
 
